@@ -1,0 +1,13 @@
+@(records: List[Record])
+@import helper._
+@main("Record List") {
+    <h1>@records.size record(s)</h1>
+
+    <ul>
+        @records.map {record =>
+            <li>
+                @record.played_at
+            </li>
+         }
+    </ul>
+}
