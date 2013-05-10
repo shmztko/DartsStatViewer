@@ -33,8 +33,10 @@ object Record {
     DB.withConnection {implicit connection =>
       SQL(
         """
-          select * from records
-          where records.played_at between {from} and {to}
+          SELECT * FROM records
+          JOIN awards ON records.id = awards.record_id
+          JOIN statistics ON records.id
+          WHERE records.played_at BETWEEN {from} AND {to}
         """
       ).on(
           'from -> from, 'to -> to

@@ -1,0 +1,19 @@
+@(users: List[User])
+@import helper._
+@main("User List") {
+    <h1>@users.size user(s)</h1>
+
+    <table>
+        <tr>
+            <th>ユーザID</th><th>メールアドレス</th><th>ログインURL</th>
+        </tr>
+
+        @users.map { user =>
+        <tr>
+            <td>@user.id</td>
+            <td>@user.email</td>
+            <td>@user.login_url</td>
+        </tr>
+        }
+    </table>
+}
